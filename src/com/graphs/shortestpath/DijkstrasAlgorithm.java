@@ -1,5 +1,6 @@
 package com.graphs.shortestpath;
 
+import java.util.Map;
 import com.graphs.dfs.Graph;
 import com.graphs.dfs.GraphType;
 import com.graphs.dfs.Vertex;
@@ -7,36 +8,31 @@ import com.graphs.dfs.Vertex;
 public class DijkstrasAlgorithm {
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     Graph graph1 = new Graph(GraphType.DIRECTED);
-    
     
     graph1.addVertex('A'); // 0
     graph1.addVertex('B'); // 1
     graph1.addVertex('C'); // 2
     graph1.addVertex('D'); // 3
     graph1.addVertex('E'); // 4
-    graph1.addVertex('F'); // 5
-    graph1.addVertex('G'); // 6
     
-    //
-    graph1.addEdge(0, 1); // A -> B
-    graph1.addEdge(0, 3); // A -> D
-    graph1.addEdge(1, 3); // B -> D 
-    graph1.addEdge(1, 4); // B -> E
-    graph1.addEdge(2, 0); // C -> A
-    graph1.addEdge(2, 5); // C -> F
-    graph1.addEdge(3, 5); // D -> F
-    graph1.addEdge(3, 6); // D -> G
-    graph1.addEdge(4, 6); // E -> G
-    graph1.addEdge(4, 6); // E -> G
-    graph1.addEdge(6, 5); // G -> F
-
-    dijkstrasAlgorithm(graph1, graph1.getVertices()[3], graph1.getVertices()[4]);
+    graph1.addWeightedEdge(0, 1, 4); // A -> B, 4
+    graph1.addWeightedEdge(0, 2, 1); // A -> C, 1
+    graph1.addWeightedEdge(1, 4, 4); // B -> E , 4
+    graph1.addWeightedEdge(2, 1, 2); // C -> B, 2
+    graph1.addWeightedEdge(2, 3, 4); // C -> D, 4
+    graph1.addWeightedEdge(3, 4, 4); // D -> E, 4
+    
+    dijkstrasAlgorithm(graph1, graph1.getVertices()[0], graph1.getVertices()[4]);
   }
 
   private static void dijkstrasAlgorithm(Graph graph1, Vertex source, Vertex dest) {
-    Map<Vertex,>
+    Map<Vertex, DistanceInfo> distanceTable = buildDistanceTable(graph1, source);
+  }
+
+  private static Map<Vertex, DistanceInfo> buildDistanceTable(Graph graph1, Vertex source) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

@@ -28,6 +28,16 @@ public class Graph {
       this.adjMatrix[end][start] = 1;
   }
 
+  public void addWeightedEdge(int start, int end, int weight) {
+    this.adjMatrix[start][end] = weight;
+    if (this.type == GraphType.UNDIRECTED)
+      this.adjMatrix[end][start] = weight;
+  }
+  
+  public int getWeightedEdge(int start, int end) {
+    return this.adjMatrix[start][end];
+  }
+  
   public void displayVertex(int v) {
     System.out.println(
         "label : " + this.vertices[v].getLabel() + " , index is " + this.vertices[v].getIndex());

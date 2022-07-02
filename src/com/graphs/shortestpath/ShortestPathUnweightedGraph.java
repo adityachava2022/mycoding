@@ -21,7 +21,6 @@ public class ShortestPathUnweightedGraph {
   public static void main(String[] args) {
     Graph graph1 = new Graph(GraphType.DIRECTED);
     
-    
     graph1.addVertex('A'); // 0
     graph1.addVertex('B'); // 1
     graph1.addVertex('C'); // 2
