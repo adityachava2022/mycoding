@@ -1,4 +1,4 @@
-package com.graphs.dfs;
+package com.graphs;
 
 public enum GraphType {
     DIRECTED,

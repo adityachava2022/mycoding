@@ -1,5 +1,8 @@
 package com.graphs.dfs;
 
+import com.graphs.Graph;
+import com.graphs.GraphType;
+
 public class DFS {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.graphs.dfs;
+package com.graphs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Stack;
 
 public class Graph {
   Vertex[] vertices;
-  int[][] adjMatrix;
-  int vertexCount;
+  public int[][] adjMatrix;
+  public int vertexCount;
   GraphType type;
 
   public Graph(GraphType type) {
@@ -103,4 +103,13 @@ public class Graph {
     return adjVertexArray;
   }
 
+  public List<Vertex> getAdjacentVerticesArrayForWeighted(Vertex currentVertex) {
+    List<Vertex> adjVertexArray = new ArrayList<>();
+    for (int i = 0; i < vertexCount; i++) {
+      if (adjMatrix[currentVertex.getIndex()][i] != 0) {
+        adjVertexArray.add(vertices[i]);
+      }
+    }
+    return adjVertexArray;
+  }
 }

@@ -1,6 +1,6 @@
 package com.graphs.shortestpath;
 
-import com.graphs.dfs.Vertex;
+import com.graphs.Vertex;
 
 public class DistanceInfo {
   private int distanceFromSource;
@@ -8,6 +8,11 @@ public class DistanceInfo {
 
   public DistanceInfo() {
     distanceFromSource = -1;
+    lastVertex = null;
+  }
+  
+  public DistanceInfo(boolean setToMaxValue) {
+    distanceFromSource = setToMaxValue ? Integer.MAX_VALUE : -1;
     lastVertex = null;
   }
 

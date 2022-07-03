@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
-import com.graphs.dfs.Graph;
-import com.graphs.dfs.GraphType;
-import com.graphs.dfs.Vertex;
+import com.graphs.Graph;
+import com.graphs.GraphType;
+import com.graphs.Vertex;
 
 public class ShortestPathUnweightedGraph {
 
@@ -45,8 +45,8 @@ public class ShortestPathUnweightedGraph {
   public static Map<Vertex, DistanceInfo> buildDistanceTable(Graph graph, Vertex src) {
     Map<Vertex, DistanceInfo> distanceTable = new HashMap<>();
     // initialize the distanceTable
-    for (Vertex v : graph.getVertices()) {
-      distanceTable.put(v, new DistanceInfo());
+    for(int i = 0; i < graph.vertexCount; i++) {
+      distanceTable.put(graph.getVertices()[i], new DistanceInfo());
     }
     // set the src vertex in the distanceTable
     distanceTable.get(src).setDistanceFromSource(0);
@@ -61,8 +61,8 @@ public class ShortestPathUnweightedGraph {
           int distance = 1 + distanceTable.get(currentVertex).getDistanceFromSource();
           distanceTable.get(adjV).setDistanceFromSource(distance);
           distanceTable.get(adjV).setLastVertex(currentVertex);
+          queue.offer(adjV);
         }
-        queue.offer(adjV);
       }
     }
     return distanceTable;
@@ -73,6 +73,11 @@ public class ShortestPathUnweightedGraph {
     Map<Vertex, DistanceInfo> distanceTable = buildDistanceTable(graph, src);
     System.out.println(" distance table ");
     System.out.println(" ==================================== ");
+    for (Map.Entry<Vertex, DistanceInfo> v: distanceTable.entrySet())
+    {
+      System.out.print(v.getKey().getLabel() + "  " + v.getValue().getDistanceFromSource() + " " + v.getValue().getLastVertex().getLabel());
+      System.out.println();
+    }
     Stack<Vertex> stack = new Stack<>();
     stack.push(dest);
     Vertex lastV = dest;
