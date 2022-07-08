@@ -15,6 +15,11 @@ public class DistanceInfo {
     distanceFromSource = setToMaxValue ? Integer.MAX_VALUE : -1;
     lastVertex = null;
   }
+  
+  public DistanceInfo(int value) {
+    distanceFromSource = value;
+    lastVertex = null;
+  }
 
   public int getDistanceFromSource() {
     return distanceFromSource;

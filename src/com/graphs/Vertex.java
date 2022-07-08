@@ -1,5 +1,7 @@
 package com.graphs;
 
+import java.util.Objects;
+
 public class Vertex {
   private char label;
   private boolean isVisited;
@@ -43,4 +45,17 @@ public class Vertex {
   public void setWeight(int weight) {
     this.weight = weight;
   }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(index);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    Vertex other = (Vertex) obj;
+    return index == other.index;
+  }
+  
+
 }

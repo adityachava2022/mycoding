@@ -9,12 +9,15 @@ public class Graph {
   public int[][] adjMatrix;
   public int vertexCount;
   GraphType type;
-
+  List<Edge> edges;
+  
+  
   public Graph(GraphType type) {
     this.vertices = new Vertex[20];
     this.adjMatrix = new int[20][20];
     this.vertexCount = 0;
     this.type = type;
+    this.edges = new ArrayList<>();
   }
 
   public void addVertex(char vertexLabel) {
@@ -30,6 +33,7 @@ public class Graph {
 
   public void addWeightedEdge(int start, int end, int weight) {
     this.adjMatrix[start][end] = weight;
+    this.edges.add(new Edge(this.getVertexAtIndex(start), this.getVertexAtIndex(end), weight));
     if (this.type == GraphType.UNDIRECTED)
       this.adjMatrix[end][start] = weight;
   }
@@ -88,6 +92,10 @@ public class Graph {
     }
     return -1;
   }
+  
+  public Vertex getVertexAtIndex(int index) {
+    return this.vertices[index];
+  }
 
   public Vertex[] getVertices() {
     return vertices;
@@ -95,7 +103,7 @@ public class Graph {
 
   public List<Vertex> getAdjacentVerticesArray(Vertex currentVertex) {
     List<Vertex> adjVertexArray = new ArrayList<>();
-    for (int column = 0; column < this.vertexCount; column++) {
+    for (int column = 0; column < this.vertexCount - 1; column++) {
       if ((adjMatrix[currentVertex.getIndex()][column] == 1) && (!vertices[column].isVisited())) {
         adjVertexArray.add(vertices[column]);
       }
@@ -105,11 +113,15 @@ public class Graph {
 
   public List<Vertex> getAdjacentVerticesArrayForWeighted(Vertex currentVertex) {
     List<Vertex> adjVertexArray = new ArrayList<>();
-    for (int i = 0; i < vertexCount; i++) {
+    for (int i = 0; i < vertexCount - 1; i++) {
       if (adjMatrix[currentVertex.getIndex()][i] != 0) {
         adjVertexArray.add(vertices[i]);
       }
     }
     return adjVertexArray;
+  }
+
+  public List<Edge> getWeightedEdges() {
+    return this.edges;
   }
 }
