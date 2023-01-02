@@ -18,9 +18,9 @@ public class Factors {
         factors.add(i);
       }
     }
-    // now decrementing i to calculate quotients
-    if (i - (n / i) == 1) {
-      i--;
+	// check if there is a duplicate of factors
+    if (i - (n / i) == 0) {
+      i -= 2; // incrementing twice once to avoid duplicates and another to decrease the condition
     }
     for (; i >= 1; i--) // quotient of numbers which give remainder as 0
     {
