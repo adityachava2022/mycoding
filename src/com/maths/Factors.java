@@ -20,7 +20,7 @@ public class Factors {
     }
 	// check if there is a duplicate of factors
     if (i - (n / i) == 0) {
-      i -= 2; // incrementing twice once to avoid duplicates and another to decrease the condition
+      i -= 2; // decrementing twice once to avoid duplicates and another to decrease due to the failed condition
     }
     for (; i >= 1; i--) // quotient of numbers which give remainder as 0
     {
